@@ -80,90 +80,49 @@
 // Disable line-wrap in your editor to see a "visualization" of the key layouts
 / {
 
-  
-  behaviors {
-       /* left-hand HRMs */
-        hml: homerow_mods_left {
-            compatible = "zmk,behavior-hold-tap";
-            flavor = "balanced";
-            tapping-term-ms = <280>;
-            quick-tap-ms = <QUICK_TAP_MS>;                // repeat on tap-into-hold
-            require-prior-idle-ms = <150>;
-            #binding-cells = <2>;
-            bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <KEYS_R THUMBS>;
-            hold-trigger-on-release;             // delay positional check until key-release
-        };
-
-        /* right-hand HRMs */
-        hmr: homerow_mods_right {
-            compatible = "zmk,behavior-hold-tap";
-            flavor = "balanced";
-            tapping-term-ms = <280>;
-            quick-tap-ms = <QUICK_TAP_MS>;                // repeat on tap-into-hold
-            require-prior-idle-ms = <150>;
-            #binding-cells = <2>;
-            bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <KEYS_L THUMBS>;
-            hold-trigger-on-release;             // delay positional check until key-release
-        };
-        tl: thumb_layer {
-            compatible = "zmk,behavior-hold-tap";
-             flavor = "balanced";
-            tapping-term-ms = <280>;
-            quick-tap-ms = <QUICK_TAP_MS>;                // repeat on tap-into-hold
-            require-prior-idle-ms = <150>;
-            #binding-cells = <2>;
-            bindings = <&mo>, <&kp>;
-            hold-trigger-on-release;             // delay positional check until key-release
-        };       
-  };
   //0
   keymap {
     compatible = "zmk,keymap";
    
     Base_layer {
       display-name = "Base";
-      bindings = <
-//|-----------------|-------------|-----------|------------|-----------------|----------------|---------------|   |---------------|---------------|-------------|------------|---------------|---------------|-------------|
-   &kp LBKT          &kp Q         &hml RALT W &kp E        &kp R             &kp T                                                &kp Y           &kp U         &kp I        &tl SCROLL_TP O &tl MOUSE P     &tl SCROLL_TP EQUAL
-   &kp RBKT          &hml LMETA A  &hml LALT S &hml LCTRL D &hml LSHIFT F     &kp G                                                &kp H           &hml LSHIFT J &hmr LCTRL K &hmr LALT L     &hmr LMETA SEMI &tl SCROLL_TP SQT
-   &kp LSHFT         &kp Z         &hml RALT X &kp C        &kp V             &kp B                                                &kp N           &kp M         &kp COMMA    &hmr RALT DOT   &tl MOUSE FSLH  &tl SCROLL_TP BSLH
-                                                            &tl FUNCTION ESC  &tl NAVIG TAB   &tl NUMBER SPACE    &tl NAVIG BSPC  &tl MEDIA DEL   &tl CONFIG RET                      
-      >;
+      bindings =<
+   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
+   &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
+   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
+                  &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
+                        >;
     };
 //1
       Game_layer {
       display-name = "Game";
       bindings = <
-//|-----------------|-------------|-----------|------------|-----------------|----------------|--------------|   |---------------|---------------|-------------|-----------|-------------|---------------|------------|
-   &kp LBKT          &kp Q         &kp W       &kp E        &kp R             &kp T                                               &kp Y           &kp U         &kp I        &kp O           &kp P           &kp EQUAL
-   &kp RBKT          &kp A         &kp S       &kp D        &kp F             &kp G                                               &kp H           &kp J         &kp K        &kp L           &kp SEMI        &kp SQT
-   &kp LSHFT         &kp Z         &kp X       &kp C        &kp V             &kp B                                               &kp N           &kp M         &kp COMMA    &kp DOT         &kp FSLH        &kp BSLH
-                                                                &kp ESC           &tl MEDIA TAB   &kp SPACE           &mkp BSPC      &mkp DEL        &mkp RET                                   
-      >;
+   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
+   &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
+   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
+                  &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
+                        >;
+
     };
 //2
       GameMouse_layer {
       display-name = "Game Mouse";
       bindings = <
-//|-----------------|-------------|-----------|------------|-----------------|----------------|--------------|   |---------------|---------------|-------------|-----------|-------------|---------------|------------|
-   &kp LBKT          &kp Q         &kp W       &kp E        &kp R             &kp T                                               &kp Y           &kp U         &kp I        &kp O           &kp P           &kp EQUAL
-   &kp RBKT          &kp A         &kp S       &kp D        &kp F             &kp G                                               &kp H           &kp J         &kp K        &kp L           &kp SEMI        &kp SQT
-   &kp  LSHFT         &kp Z         &kp X       &kp C        &kp V             &kp B                                               &kp N           &kp M         &kp COMMA    &kp DOT         &kp FSLH        &kp BSLH
-                                                                &kp ESC           &tl SYMBOL TAB   &kp SPACE           &mkp LCLK      &mkp MCLK       &mkp RCLK                                 
-      >;
+   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
+   &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
+   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
+                  &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
+                        >;
     };
 //3
     Nav_layer {
       display-name = "Nav";
          bindings = <
-//|------------|-------------|-----------|-----------|---------------|---------------|---------------|   |---------------|---------------|-------------|-----------|-------------|---------------|------------|
-   &trans       &kp HOME      &kp PG_UP   &kp PG_DN   &kp END         &trans                                              &trans          &kp RA(GRAVE) &kp RA(SQT) &trans        &trans          &trans
-   &trans       &kp LEFT      &kp UP      &kp DOWN    &kp RIGHT       &caps_word                                          &trans          &kp LSHIFT    &kp LCTRL   &kp LALT      &kp LMETA       &trans
-   &trans       &trans        &trans      &trans      &trans          &trans                                              &trans          &trans        &trans      &kp RALT      &trans          &trans
-                                                          &caps_word      &kp LBKT        &kp RBKT            &trans          &trans          &trans                                
-      >;
+   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
+   &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
+   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
+                  &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
+                        >;
     };
 //4
     Num_layer {
