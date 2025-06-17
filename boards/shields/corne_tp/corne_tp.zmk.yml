@@ -1,0 +1,13 @@
+file_format: "1"
+id: corne_tp
+name: corne_tp
+type: shield
+url: https://github.com/felixm12138/zmk-config-corne_tp
+requires: [pro_micro]
+exposes: []
+features:
+  - keys
+  - studio
+siblings:
+  - corne_tp_left
+  - corne_tp_right
